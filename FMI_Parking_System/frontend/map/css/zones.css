@@ -1,0 +1,458 @@
+* {
+    box-sizing: border-box
+}
+
+body {
+    background: linear-gradient(to right top, #65dfc9, #6cdbeb);
+    font-family: Verdana, sans-serif;
+
+    margin: 0;
+    margin-top: 20px;
+    min-height: 100vh;
+
+    --red-color: #aa0428;
+    --green-color: rgb(50, 131, 36);
+}
+
+h2 {
+    margin: 0;
+}
+
+input, select {
+    font-size: 20px;
+}
+
+/* Slideshow container */
+
+.slideshow-container {
+    position: relative;
+    margin: auto;
+    max-width: 640px;
+}
+
+.zoomedZones {
+    width: 640px;
+}
+
+.border {
+    border: 2px solid grey;
+    border-radius: 3%;
+}
+
+/* form */
+
+#search-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    margin: 1vw 0;
+}
+
+#form-header {
+    margin-bottom: 0.5rem;
+}
+
+#form-inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Next & previous buttons */
+
+.prev,
+.next {
+    cursor: pointer;
+
+    position: absolute;
+    top: 50%;
+
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+
+/* Position the "next button" to the right */
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+
+/* On hover, add a black background color with a little bit see-through */
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+/* Caption text */
+
+.text {
+    color: #970E53;
+
+    font-size: 20px;
+    padding: 8px 12px;
+    bottom: 8px;
+    width: 100%;
+
+    text-align: center;
+    text-shadow: 1px 1px #3b3a3a;
+    filter: brightness(145%);
+}
+
+
+/* Number text (1/3 etc) */
+
+.numbertext {
+    color: #f2f2f2;
+
+    font-size: 12px;
+    padding: 8px 12px;
+
+    position: center;
+    top: 0;
+
+    text-align: center;
+}
+
+.btn-container {
+    margin: 0;
+    text-align: center;
+    width: 100%;
+}
+
+
+/* The btns/bullets/indicators */
+
+.btn, .search-btn {
+    cursor: pointer;
+
+    width: 12%;
+    max-width: 155px;
+
+    display: inline-block;
+    transition: background-color 0.6s ease;
+    filter: brightness(110%);
+}
+
+.search-btn {
+    margin-left: 0.8rem;
+}
+
+#back-btn {
+    position: fixed;
+    bottom: 3rem;
+    left: 3rem;
+}
+
+.slots-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+.row-btns {
+    display: flex;
+    justify-content: center;
+}
+
+.slots-btn {
+    border-radius: 1rem;
+    border: none;
+    padding: 1rem;
+    width: 10%;
+
+    border: 2px solid gray;
+    background-color: gray;
+    color: white;
+
+    font-size: xx-large;
+    margin: 0.5rem 0.5rem;
+}
+
+.active,
+.btn:hover,
+.search-btn:hover {
+    filter: brightness(135%);
+}
+
+.non-taken-slot {
+    background-color: var(--green-color) !important;
+}
+
+.taken-slot {
+    background-color: var(--red-color) !important;
+}
+
+.non-taken-slot:hover {
+    cursor: pointer;
+    transition: 0.4s ease-in;
+    border-color: rgba(238, 252, 253);
+    box-shadow: 0 0 1rem rgba(255, 255, 255, 0.7);
+}
+
+.unavailable-slot {
+    cursor: auto !important;
+    background-color: gray !important;
+}
+
+.user-taken-slot {
+    cursor: auto !important;
+    background-color: darkorange;
+}
+
+/* Fading animation */
+
+.fade {
+    -webkit-animation-name: fade; /* Chrome and Safari */
+    -webkit-animation-duration: 2.0s; /* Chrome and Safari */
+    -moz-animation-name: fade; /* Mozilla */
+    -moz-animation-duration: 2.0s; /* Mozilla */
+    animation-name: fade;
+    animation-duration: 2.0s;
+}
+
+@-moz-keyframes fade {
+    from {
+        opacity: .4;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: .4;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: .4;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* response message for search query */
+
+#response, #reservation-response {
+    display: none;
+
+    font-size: x-large;
+
+    position: absolute;
+    left: 35%;
+    width: 30%;
+    z-index: 4;
+
+    padding: 1rem;
+
+    color: white;
+    text-align: center;
+}
+
+#reservation-response {
+    width: 40%;
+    left: 30%;
+}
+
+.error {
+    display: block !important;
+
+    background-color: rgb(255, 77, 77);
+    box-shadow: 0 0 1rem rgba(255, 77, 77, 0.7);
+}
+
+.success {
+    display: block !important;
+
+    background-color: darkorange;
+    box-shadow: 0 0 1rem darkorange;
+}
+
+.show-popup {
+    -webkit-animation: fadeIn-Out 4s; /* Chrome and Safari */
+    -moz-animation: fadeIn-Out 4s; /* Mozilla */
+    animation: fadeIn-Out 4s;
+}
+
+/* 37,5% to 62.5% creates a pause and then the message disappears */
+@-moz-keyframes fadeIn-Out {
+    0% {
+        opacity: 0;
+    }
+    37.5% {
+        opacity: 1;
+    }
+    62.5% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+  
+@-webkit-keyframes fadeIn-Out {
+    0% {
+        opacity: 0;
+    }
+    37.5% {
+        opacity: 1;
+    }
+    62.5% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn-Out {
+    0% {
+        opacity: 0;
+    }
+    37.5% {
+        opacity: 1;
+    }
+    62.5% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+#search-params {
+    margin-left: 2rem;
+    font-size: 16px;
+    text-align: center;
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.3));
+    border-radius: 1rem;
+    padding: 0.5rem;
+    box-shadow: 6px 6px 20px rgba(122, 122, 122, 0.212);
+}
+
+#search-params p {
+    color: rgb(68, 68, 68);
+    text-shadow: 1px 1px #3b3a3a;
+    margin: 0.2rem 0;
+}
+
+#confirm-message-container {
+    position: absolute;
+    margin: auto;
+
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    z-index: 3;
+
+    box-sizing: border-box;
+    width: 30%;
+    max-height: 250px;
+    min-height: 20%;
+
+    background: rgb(246, 246, 246);
+    box-shadow: 0 0 1rem rgb(246, 246, 246);
+
+    opacity: 1;
+
+    font-size: 20px;
+
+    border-radius: 1rem;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.non-visible {
+    display: none !important;
+}
+
+.dimmer {
+    display: inline-block;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 2;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    background: #000;
+    opacity: 0.4;
+}
+
+#confirm-message, #button-list, #message {
+    margin: 0;
+    padding: 0;
+}
+
+#message {
+    flex: 1 0 70%;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#confirm-message {
+    color: #8f9cb5;
+    font-size: x-large;
+}
+
+#button-list {
+    flex: 1 0 30%;
+    list-style: none;
+    display: flex;
+}
+
+#button-list li {
+    flex: 1 1 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#button-list li:hover {
+    filter: brightness(110%);
+}
+
+#yes-button {
+    background-color: #fc7169;
+    color: white;
+    border-bottom-left-radius: 1rem;
+}
+
+#no-button {
+    background-color: #b6bece;
+    color: white;
+    border-bottom-right-radius: 1rem;
+}

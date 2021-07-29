@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/login_form_styles.css">
+    <script defer src="javascript/send_user_data.js"></script>
+    <title>Login</title>
+</head>
+<body>
+    <main>
+        <!-- log in page header -->
+        <header>
+            <h1 id="system-name-header">Система за паркиране във ФМИ</h1>
+        </header>
+
+        <!-- log in form -->
+        <form id="login-form">
+
+            <!-- email -->
+            <div class="form-item">
+                <label for="email"><span>Имейл:</span></label>
+                <input type="email" placeholder="въведете имейл" required name="email" id="email">
+            </div>
+
+            <!-- password -->
+            <div class="form-item">
+                <label for="password"><span>Парола:</span></label>
+                <input type="password" placeholder="въведете парола" required name="password" id="password">
+            </div>
+
+            <!-- submit button -->
+            <div class="form-item button-container">
+                <button type="submit" id="login-button">Вход</button>
+            </div>
+
+            <!-- response when a field was incorrect -->
+            <div class="form-item no-show" id="response-message">
+            </div>
+        </form>
+
+        <!-- button for redirection over to the registration page in case the user doesn't have account -->
+        <button type="button" id="to-registration-btn">Регистрация</button>
+    </main>
+</body>
+</html>

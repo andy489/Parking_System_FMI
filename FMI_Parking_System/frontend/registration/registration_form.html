@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/form_styles.css">
+    <script defer src="javascript/send_form.js"></script>
+    <title>Register</title>
+</head>
+<body>
+    <main>
+
+        <!-- Registration page header -->
+        <header>
+            <h1 id="system-name-header">Система за паркиране във ФМИ</h1>
+        </header>
+
+        <!-- Registration form -->
+        <form id="registration-form">
+
+            <!-- First name -->
+            <div class="form-item">
+                <label for="firstname"><span>Име:</span></label>
+                <input type="text" placeholder="Въведете име" autocomplete="off" required name="firstname" id="firstname">
+            </div>
+
+            <!-- Family name -->
+            <div class="form-item">
+                <label for="lastname"><span>Фамилия:</span></label>
+                <input type="text" placeholder="Въведете фамилия" autocomplete="off" required name="lastname" id="lastname">
+            </div>
+
+            <!-- E-mail -->
+            <div class="form-item">
+                <label for="email"><span>Имейл:</span></label>
+                <input type="email" placeholder="Въведете имейл" required name="email" id="email">
+            </div>
+
+            <!-- Password -->
+            <div class="form-item">
+                <label for="password"><span>Парола:</span></label>
+                <input type="password" placeholder="Въведете парола" required name="password" id="password">
+            </div>
+
+            <!-- Repeated password -->
+            <div class="form-item">
+                <label for="repeat-password"><span>Повторете паролата:</span></label>
+                <input type="password" placeholder="Повторете паролата" required name="repeat_password" id="repeat-password">
+            </div>
+
+            <!-- User type -->
+            <div class="form-item">
+                <label for="user-type"><span>Тип:</span></label>
+                <select name="user_type" id="user-type">
+                    <option value="Щатен преподавател">Щатен преподавател</option>
+                    <option value="Хоноруван преподавател">Хоноруван преподавател</option>
+                    <option value="Студент">Студент</option>
+                </select>
+            </div>
+
+            <!-- Submit button -->
+            <div class="form-item button-container">
+                <button type="submit" id="register-button">Регистриране</button>
+            </div>
+
+            <!-- Response message -->
+            <div class="form-item no-display" id="response-message">
+            </div>
+        </form>
+    </main>
+</body>
+</html>

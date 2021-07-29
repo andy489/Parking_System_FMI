@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/account_view_styles.css">
+    <script defer src="javascript/load_user_data.js"></script>
+    <script defer src="javascript/load_today_schedule.js"></script>
+    <script defer src="javascript/log_out_user.js"></script>
+    <script defer src="javascript/button_reaction.js"></script>
+    <script defer src="javascript/map_click_reaction.js"></script>
+    <script defer src="javascript/submit_csv_file.js"></script>
+    <script defer src="javascript/get_schedule.js"></script>
+    <script>
+        /* reload the page on load because the page won't load the user's data when he has set cookies */
+        window.onload = function() {
+            if (!window.location.hash) {
+                window.location = window.location + '#loaded';
+                window.location.reload();
+            }
+        }
+    </script>
+    <title>Home</title>
+</head>
+<body>
+    <main>
+        <section id="account-tab">
+
+            <!-- Navbar -->
+            <nav id="options-menu">
+
+                <!-- Sofia University logo -->
+                <div class="non-option">
+                    <img src="images/Sofia_University_Logo.png" alt="Sofia University Logo">
+                </div>
+
+                <div class="option" id="my-account">
+                    <span><h3>Моят акаунт</h3></span>
+                </div>
+
+                <div class="option" id="parking-zones">
+                    <span><h3>Паркинг зони</h3></span>
+                </div>
+
+                <div class="option" id="reserve-spot">
+                    <span><h3>Запази паркомясто</h3></span>
+                </div>
+
+                <div class="option" id="my-schedule">
+                    <span><h3>Моят график</h3></span>
+                </div>
+
+                <div class="option" id="log-out">
+                    <span><h3>Изход</h3></span>
+                </div>
+
+                <!-- System name -->
+                <div class="non-option">
+                    <span id="system-name"><h3>Система за паркиране във ФМИ</h3></span>
+                </div>
+
+            </nav>
+
+            <!-- My Account tab -->
+            <section id="my-account-section" class="right-tab">
+
+                <!-- The tab header -->
+                <header id="my-account-header">
+                    <h1>Моят акаунт</h1>
+                </header>
+
+                <!-- The content of the tab -->
+                <article id="account-details">
+
+                    <!-- User picture (for now it is a static one) -->
+                    <div id="user-picture">
+                        <img src="images/sample_user1.png" alt="user-picture">
+                    </div>
+
+                    <p id="firstname"><strong>Име: </strong></p>
+                    <p id="lastname"><strong>Фамилия: </strong></p>
+                    <p id="email"><strong>Имейл: </strong></p>
+                    <p id="user-type"><strong>Тип потребител: </strong></p>
+                    <p><strong>График за днес: </strong></p>
+
+                    <!-- The schedule of the user for today-->
+                    <div class="schedule">
+                    </div>
+                </article>
+
+            </section>
+
+            <!-- Map of all parking zones -->
+            <section id="parking-zones-section" class="no-display right-tab">
+                <img src="images/map.png" alt="map showing all the zones">
+            </section>
+
+            <!-- Upload schedule tab -->
+            <section id="my-schedule-section" class="no-display right-tab">
+
+                <!-- The three buttons over at the top of the tab -->
+                <section id="button-section">
+                    <button class="button-style" id="first-button">Качване на график</button>
+                    <button class="button-style active" id="second-button">График</button>
+                    <button class="button-style" id="third-button">Запазени паркоместа</button>
+                </section>
+
+                <!-- The section for the "Качване на график" button -->
+                <section id="upload-file-section" class="no-display">
+                    <form id="upload-file-form">
+                        <label for="csv">Качете CSV файл:</label>
+                        <input type="file" id="csv">
+                        <button class="button-style" id="upload-file">Запази файл</button>
+                    </form>
+
+                    <!-- Used for the response from the server -->
+                    <div id="upload-response">
+                    </div>
+                </section>
+
+                <!-- The section for the "График" button -->
+                <section id="schedule-section">
+                    <header>
+                        <h4>Предстоящи занятия</h4>
+                    </header>
+
+                    <article id="upcoming-schedule">
+                        <!-- <div class="schedule schedule-item">
+                            <span><h4>Лекция: Приложен човеко-машинен интерфейс</h4></span>
+                            <span><p>10.06.2021, 12:00-14:00, ФХФ</p></span>
+                        </div> -->
+                    </article>
+                </section>
+
+                <!-- The section for the "Запазени паркоместа" button -->
+                <section id="slots-section" class="no-display">
+                    <header>
+                        <h4>Резервирани паркоместа</h4>
+                    </header>
+
+                    <article id="taken-slots">
+                        <!-- <div class="schedule schedule-item">
+                            <span><h4>Паркомясто: A6</h4></span>
+                            <span><p>10.06.2021, 12:00-14:00</p></span>
+                        </div> -->
+                    </article>
+                </section>
+
+            </section>
+            
+        </section>
+    </main>
+
+    <!-- background glass circles -->
+    <div class="glass-circle" id="top-glass-circle"></div>
+    <div class="glass-circle" id="bottom-glass-circle"></div>
+</body>
+</html>

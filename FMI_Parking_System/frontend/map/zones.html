@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/zones.css">
+    <script defer src="javascript/load_map.js"></script>
+    <script defer src="javascript/send_form_search.js"></script>
+    <script defer src="javascript/handle_select_options.js"></script>
+    <script defer src="javascript/buttons_click.js"></script>
+    <title>Save slot</title>
+</head>
+
+<body>
+
+    <main>
+        <!-- Slideshow -->
+        <div class="slideshow-container">
+
+            <!-- First slide -->
+            <div class="mySlides fade">
+                <div class="numbertext">1 / 4</div>
+                <img src="./images/azone.png" class="zoomedZones border" alt="zoneA">
+                <div class="text">ФМИ заден вход</div>
+            </div>
+    
+            <!-- Second slide -->
+            <div class="mySlides fade">
+                <div class="numbertext">2 / 4</div>
+                <img src="./images/bzone.png" class="zoomedZones border" alt="zoneB">
+                <div class="text">ФзФ</div>
+            </div>
+    
+            <!-- Third slide -->
+            <div class="mySlides fade">
+                <div class="numbertext">3 / 4</div>
+                <img src="./images/czone.png" class="zoomedZones border" alt="zoneC">
+                <div class="text">ФХФ</div>
+            </div>
+    
+            <!-- Fourth slide -->
+            <div class="mySlides fade">
+                <div class="numbertext">4 / 4</div>
+                <img src="./images/dzone.png" class="zoomedZones border" alt="zoneD">
+                <div class="text">ФМИ главен вход</div>
+            </div>
+    
+            <!-- Pointers for next and previous slide -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+    
+        <!-- Form for querying available places in a specific time period -->
+        <form id="search-form">
+
+            <!-- Form header -->
+            <header id="form-header">
+                <h2 class="text">Изберете времеви интервал</h2>
+            </header>
+
+            <!-- The form itself -->
+            <section id="form-inputs">
+
+                <!-- Date for the query -->
+                <div class="form-item">
+                    <label for="date" class="text">Дата:</label>
+                    <input type="date" name="date" id="date">
+                </div>
+    
+                <!-- The beggining of the time interval -->
+                <div class="form-item">
+                    <label for="start-time" class="text">Начало:</label>
+
+                    <!-- Its options are created dynamically -->
+                    <select name="start-time" id="start-time">
+                    </select>
+                </div>
+    
+                <!-- The end of the time interval -->
+                <div class="form-item">
+                    <label for="end-time" class="text">Край:</label>
+
+                    <!-- Its options are created dynamically -->
+                    <select name="end-time" id="end-time">
+                    </select>
+                </div>
+    
+                <!-- button "Търси" for submitting the form -->
+                <img src="images/search.png" class="search-btn">
+
+                <!-- <div id="search-params">
+                    <h2 class="text">Избран времеви интервал</h2>
+                    <p>Дата: <span id="date-value">22.06.2021</span>; Интервал: <span id="start-time-value">7</span>&ndash;<span id="end-time-value">8</span></p>
+                </div> -->
+            </section>
+
+            <!-- Response from the backend -->
+            <div id="response">
+            </div>
+        </form>
+    
+        <!-- Zone buttons -->
+        <div class="btn-container">
+            <img src="./images/zA.png" alt="btnA" class="btn" onclick="currentSlide(1)"></img>
+            <img src="./images/zB.png" alt="btnB" class="btn" onclick="currentSlide(2)"></img>
+            <img src="./images/zC.png" alt="btnC" class="btn" onclick="currentSlide(3)"></img>
+            <img src="./images/zD.png" alt="btnD" class="btn" onclick="currentSlide(4)"></img>
+        </div>
+    
+        <!-- Response from the backend -->
+        <div id="reservation-response">
+        </div>
+
+        <!-- Container of the buttons for each of the slots for the given zone (will be added dynamically by JS) -->
+    </main>
+
+    <!-- Confirmation box for when the user clicks on an available slot -->
+    <div id="confirm-message-container" class="non-visible">
+        <section id="message">
+            <p id="confirm-message">Сигурни ли сте, че искате да резервирате <span id="selected-button"></span>?</p>
+        </section>
+
+        <ul id="button-list">
+            <li id="yes-button">
+                <span>ДА</span>
+            </li>
+            <li id="no-button">
+                <span>НЕ</span>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Dimmer that is used when the confirmation box is displayed (it makes sure that only the confirmation box's options can be pressed and dims everything but the confirmation box)-->
+    <div class="dimmer non-visible">
+    </div>
+
+    <!-- "Назад" button -->
+    <aside>
+        <img src="images/back.png" class="search-btn" id="back-btn">  
+    </aside>  
+</body>
+
+</html>
