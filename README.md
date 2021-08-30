@@ -1,6 +1,8 @@
 ## FMI_Parking_System
 ### WEB Technologies Project
 
+[**Documentation**](https://github.com/andy489/FMI_Parking_System/blob/main/Documentation/FMI%20Parking%20System.pdf)
+
 <p align="center">
   <img src="https://github.com/andy489/FMI_Parking_System/blob/main/Documentation/assets/schedule01.png" width="680">
 </p>
